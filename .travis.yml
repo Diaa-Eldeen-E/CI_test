@@ -16,5 +16,5 @@ install:
  # - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
 
 script:
-    runLinux.sh
+    - runLinux.sh
     #- PowerShell -File run.ps1
