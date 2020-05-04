@@ -10,24 +10,3 @@ cmake --build ./_builds/make
 
 ./_builds/make/changeT
 
-cd ./_builds/make
-
-dir
-
-ctest
-
-
- #mingw32-make change -C .\_builds\make
-
-
-# mingw32-make install -C .\_builds\make
-
-# Start-Process .\_builds\make\change.exe
-
-
-# deletes the folder without asking permission
-# -force flag can be added to delete hidden or read-only files
-# del _builds -Recurse   
-
-#Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
-#Get-ExecutionPolicy
