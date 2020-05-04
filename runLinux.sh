@@ -4,11 +4,11 @@
  #a good practice to specify a folder for a specific build type
  # -S . is the new, it's old equivalent is -H. must be '-H.' in power shell
 # cmake -S . -B_builds\make -G "MinGW Makefiles" -DCMAKE_SH="CMAKE_SH-NOTFOUND"
-cmake -S . -B_builds/make
+cmake -S . -B_builds/make -DCMAKE_CXX_STANDARD=11
 
 cmake --build ./_builds/make
 
-./_builds\make\changeT
+./_builds/make/changeT
 
 cd ./_builds/make
 
