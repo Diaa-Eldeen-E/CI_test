@@ -4,7 +4,7 @@ compiler: gcc
 
 matrix:
   include:
-    - os: windows
+    - os: linux
 
 
 before_install:
@@ -13,7 +13,8 @@ before_install:
 
 
 install:
-  - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
+ # - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
 
 script:
-    - PowerShell -File run.ps1
+    runLinux.sh
+    #- PowerShell -File run.ps1
