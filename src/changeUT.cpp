@@ -22,7 +22,7 @@ namespace {
 //
 
 // Tests factorial of negative numbers.
-TEST(changeTest, Negative) {
+TEST(changeTestCase, Negative) {
   // This test is named "Negative", and belongs to the "FactorialTest"
   // test case.
   EXPECT_EQ(1, get_change(1));
@@ -31,6 +31,15 @@ TEST(changeTest, Negative) {
 
 }
 
+
+TEST(changeTestCase, Positive) {
+  // This test is named "Negative", and belongs to the "FactorialTest"
+  // test case.
+  EXPECT_EQ(1, get_change(1));
+  EXPECT_EQ(2, get_change(6));
+  EXPECT_EQ(3, get_change(12));
+
+}
 
 
 

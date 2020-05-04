@@ -27,7 +27,6 @@ endif()
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
 
-
 set(CMAKE_CXX_FLAGS "-Wno-deprecated-declarations")
 
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" . 
@@ -95,7 +94,7 @@ message(STATUS "dcdddddir:  ${CMAKE_CURRENT_BINARY_DIR}")
 target_link_libraries(changeT gtest gtest_main)
 
 
-#add_test(NAME example_test COMMAND changeT)
+add_test(changeTest changeT)
 
 
 
