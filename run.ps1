@@ -8,7 +8,12 @@ cmake -S . -B_builds\make
 
 cmake --build .\_builds\make
 
-.\_builds\make\changeT.exe
+cd ./_builds/make
+
+dir
+
+changeT
+#.\_builds\make\changeT.exe
  #mingw32-make change -C .\_builds\make
 
 
