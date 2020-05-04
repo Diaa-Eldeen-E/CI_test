@@ -2,6 +2,11 @@ language: cpp
 
 compiler: gcc
 
+matrix:
+  include:
+    - os: windows
+
+
 install:
   - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
 
