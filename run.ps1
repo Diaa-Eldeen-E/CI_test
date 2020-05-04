@@ -12,7 +12,10 @@ cd ./_builds/make
 
 dir
 
-changeT
+changeT.sln
+
+ctest
+RUN_TESTS
 #.\_builds\make\changeT.exe
  #mingw32-make change -C .\_builds\make
 
