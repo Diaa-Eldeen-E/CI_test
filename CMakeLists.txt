@@ -30,7 +30,7 @@ configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
 
 set(CMAKE_CXX_FLAGS "-Wno-deprecated-declarations")
 
-execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" . -DCMAKE_SH="CMAKE_SH-NOTFOUND"
+execute_process(COMMAND ${CMAKE_COMMAND} -DCMAKE_SH="CMAKE_SH-NOTFOUND" -G "${CMAKE_GENERATOR}" . 
   RESULT_VARIABLE result
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/googletest-download )
   
