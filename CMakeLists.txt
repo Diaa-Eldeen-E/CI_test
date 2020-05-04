@@ -2,9 +2,12 @@
 
 cmake_minimum_required(VERSION 3.1)
 
+set(DCMAKE_SH="CMAKE_SH-NOTFOUND")
+
 project(changeT)
 
 enable_testing()
+
 
 # ---------------------- -std=c++11 -------------------------------------
 include(CheckCXXCompilerFlag)

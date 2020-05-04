@@ -7,6 +7,11 @@ matrix:
     - os: windows
 
 
+before_install:
+- echo $LANG
+- echo $LC_ALL
+
+
 install:
   - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
 
