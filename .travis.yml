@@ -28,6 +28,11 @@ script:
     #- dos2unix runLinux.sh
     #- bash runLinux.sh
     #- PowerShell -File run.ps1     # This is not working  
+    - ./get_code_cov >/dev/null
+    - codecov >/dev/null
+
+
+after_success:
     - bash <(curl -s https://codecov.io/bash)
     # - echo "token" > .cc_token
     # - curl -s https://codecov.io/bash -t @.cc_token
