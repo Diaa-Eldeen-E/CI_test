@@ -2,9 +2,9 @@ language: cpp
 
 compiler: gcc
 
-# env:
-    # global:
-        # - CODECOV_TOKEN="8ad626de-f68d-4889-aa49-dae87caed5d4"
+env:
+    global:
+        - CODECOV_TOKEN="8ad626de-f68d-4889-aa49-dae87caed5d4"
 
 matrix:
   include:
