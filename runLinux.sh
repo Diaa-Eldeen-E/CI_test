@@ -1,4 +1,6 @@
-﻿echo "Executing the script"
+﻿#!/bin/bash
+
+echo "Executing the script"
 
  # .(CMakelists files dir), -B(build directory), -G (generate)
  #a good practice to specify a folder for a specific build type
