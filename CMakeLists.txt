@@ -85,6 +85,6 @@ target_link_libraries(testChange gtest gtest_main)
 # include(CodeCoverage)
 # setup_target_for_coverage(ct_coverage testChange coverage)
 
-# SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
-# SET(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
+SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
+SET(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
 
