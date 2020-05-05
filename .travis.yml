@@ -14,6 +14,7 @@ matrix:
 before_install:
     - echo "Before install"
     - export CODECOV_TOKEN="token"
+    # - sudo pip install codecov
     #install dos2unix to convert endline character of my script file to a linux script file
     # - sudo apt-get install dos2unix
 
@@ -27,6 +28,6 @@ script:
     #- dos2unix runLinux.sh
     #- bash runLinux.sh
     #- PowerShell -File run.ps1     # This is not working  
-    - curl -s https://codecov.io/bash -t token
+    - bash <(curl -s https://codecov.io/bash)
     # - echo "token" > .cc_token
     # - curl -s https://codecov.io/bash -t @.cc_token
