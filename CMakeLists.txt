@@ -9,7 +9,7 @@ project(changeT)
 enable_testing()
 
 
-# ---------------------- -std=c++11 -------------------------------------
+# ---------------------- -std=c++11 check-------------------------------------
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
 
@@ -27,7 +27,7 @@ endif()
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
 
-set(CMAKE_CXX_FLAGS "-Wno-deprecated-declarations")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations")
 
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" . 
   RESULT_VARIABLE result
