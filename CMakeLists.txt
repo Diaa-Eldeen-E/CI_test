@@ -4,34 +4,19 @@ cmake_minimum_required(VERSION 3.1)
 
 #set(DCMAKE_SH="CMAKE_SH-NOTFOUND")
 
-project(changeT)
+project(change)
 
 enable_testing()
 
-
-# ---------------------- -std=c++11 check-------------------------------------
-include(CheckCXXCompilerFlag)
-CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-
-if(COMPILER_SUPPORTS_CXX11)#
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-elseif(COMPILER_SUPPORTS_CXX0X)#
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
-	message(WARNING "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support.")
-else()
-    message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
-endif()
-
-# Another flag for gtest to compile without errors
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations")
-
-message(STATUS "Used compiler flags: ${CMAKE_CXX_FLAGS} ")
-# -------------------------------------------------------------------------
 
 #--------------------------- google test setup ----------------------------
 
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
+
+
+# Flag for gtest to compile without errors
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations")
 
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" . 
   RESULT_VARIABLE result
@@ -65,6 +50,7 @@ endif()
 
 # -------------------------------------------------------------------------------------
 
+
 # Now simply link against gtest or gtest_main as needed. Eg
 
 set(TEST_SOURCES 
@@ -79,20 +65,15 @@ set(EXE_SOURCES
 
 add_executable(change "${EXE_SOURCES}")
 
-add_executable(testChange "${TEST_SOURCES}")
-
 target_include_directories(change PUBLIC
 			"${PROJECT_SOURCE_DIR}/include" )
-			
-target_include_directories(testChange PUBLIC
-			"${PROJECT_SOURCE_DIR}/include"
-			"${CMAKE_CURRENT_BINARY_DIR}/googletest-src/googletest/include/gtest")		
 
+
+add_executable(testChange "${TEST_SOURCES}")
+
+target_include_directories(testChange PUBLIC
+			"${PROJECT_SOURCE_DIR}/include"		
+			"${CMAKE_CURRENT_BINARY_DIR}/googletest-src/googletest/include/gtest")	
 
 target_link_libraries(testChange gtest gtest_main)
-
-
-add_test(ATEST testChange)
-
-
 

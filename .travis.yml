@@ -8,8 +8,8 @@ matrix:
 
 
 before_install:
-- echo $LANG
-- echo $LC_ALL
+- echo "Before install"
+
 
 
 install:
