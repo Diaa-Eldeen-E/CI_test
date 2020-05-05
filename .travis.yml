@@ -4,13 +4,13 @@ compiler: gcc
 
 matrix:
   include:
-    - os: linux
+    - os: windows
 
 
 before_install:
     - echo "Before install"
     #install dos2unix to convert endline character of my script file to a linux script file
-    - sudo apt-get install dos2unix
+    # - sudo apt-get install dos2unix
 
 
 
