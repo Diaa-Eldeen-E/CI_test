@@ -1,4 +1,4 @@
-# change money project build
+# change money test project build
 
 cmake_minimum_required(VERSION 3.1)
 
@@ -17,17 +17,21 @@ if(COMPILER_SUPPORTS_CXX11)#
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 elseif(COMPILER_SUPPORTS_CXX0X)#
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+	message(WARNING "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support.")
 else()
-    message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
+    message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 endif()
-# ------------------------------------------------------------------
 
+# Another flag for gtest to compile without errors
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations")
 
+message(STATUS "Used compiler flags: ${CMAKE_CXX_FLAGS} ")
+# -------------------------------------------------------------------------
+
+#--------------------------- google test setup ----------------------------
 
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations")
 
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" . 
   RESULT_VARIABLE result
@@ -45,56 +49,50 @@ if(result)
   message(FATAL_ERROR "Build step for googletest failed: ${result}")
 endif()
 
-# Prevent overriding the parent project's compiler/linker
-# settings on Windows
+# Prevent overriding the parent project's compiler/linker settings on Windows
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-# Add googletest directly to our build. This defines
-# the gtest and gtest_main targets.
+# Add googletest directly to our build. This defines the gtest and gtest_main targets.
 add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
                  ${CMAKE_CURRENT_BINARY_DIR}/googletest-build
                  EXCLUDE_FROM_ALL)
 
-# The gtest/gtest_main targets carry header search path
-# dependencies automatically when using CMake 2.8.11 or
-# later. Otherwise we have to add them here ourselves.
+# The gtest/gtest_main targets carry header search path dependencies automatically
+# when using CMake 2.8.11 or later. Otherwise we have to add them here ourselves.
 if (CMAKE_VERSION VERSION_LESS 2.8.11)
   include_directories("${gtest_SOURCE_DIR}/include")
 endif()
 
+# -------------------------------------------------------------------------------------
+
 # Now simply link against gtest or gtest_main as needed. Eg
 
-
-
-
-set(SOURCES 
+set(TEST_SOURCES 
 	src/change.cpp 
-	src/changeUT.cpp
-	#src/main.cpp 
+	test/changeUT.cpp
 )
 
-# set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DEX2" CACHE STRING "Set C++ Compiler Flags" FORCE)
+set(EXE_SOURCES 
+	src/change.cpp 
+	src/main.cpp
+)
 
+add_executable(change "${EXE_SOURCES}")
 
+add_executable(testChange "${TEST_SOURCES}")
 
-
-
-add_executable(changeT "${SOURCES}")
-
-
-
-target_include_directories(changeT PUBLIC
+target_include_directories(change PUBLIC
 			"${PROJECT_SOURCE_DIR}/include" )
 			
-target_include_directories(changeT PUBLIC
+target_include_directories(testChange PUBLIC
+			"${PROJECT_SOURCE_DIR}/include"
 			"${CMAKE_CURRENT_BINARY_DIR}/googletest-src/googletest/include/gtest")		
 
-message(STATUS "dcdddddir:  ${CMAKE_CURRENT_BINARY_DIR}")
 
-target_link_libraries(changeT gtest gtest_main)
+target_link_libraries(testChange gtest gtest_main)
 
 
-add_test(changeTest changeT)
+add_test(ATEST testChange)
 
 
 
