@@ -1,6 +1,6 @@
 language: cpp
 
-compiler: gcc
+compiler: gcc 
 
 env:
     - CODECOV_TOKEN="8ad626de-f68d-4889-aa49-dae87caed5d4"
