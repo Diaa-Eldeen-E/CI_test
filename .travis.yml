@@ -27,7 +27,6 @@ script:
     #- dos2unix runLinux.sh
     #- bash runLinux.sh
     #- PowerShell -File run.ps1     # This is not working  
-    - echo "Hello!!!!"
-    # - curl -s https://codecov.io/bash -t token
+    - curl -s https://codecov.io/bash -t token
     # - echo "token" > .cc_token
     # - curl -s https://codecov.io/bash -t @.cc_token
