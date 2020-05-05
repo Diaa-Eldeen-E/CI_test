@@ -53,6 +53,7 @@ endif()
 
 # Now simply link against gtest or gtest_main as needed. Eg
 
+# Soruce variables
 set(TEST_SOURCES 
 	src/change.cpp 
 	test/changeUT.cpp
@@ -63,6 +64,7 @@ set(EXE_SOURCES
 	src/main.cpp
 )
 
+#Executables and links
 add_executable(change "${EXE_SOURCES}")
 
 target_include_directories(change PUBLIC
@@ -76,4 +78,13 @@ target_include_directories(testChange PUBLIC
 			"${CMAKE_CURRENT_BINARY_DIR}/googletest-src/googletest/include/gtest")	
 
 target_link_libraries(testChange gtest gtest_main)
+
+
+#Code coverage
+
+# include(CodeCoverage)
+# setup_target_for_coverage(ct_coverage testChange coverage)
+
+# SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
+# SET(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
 

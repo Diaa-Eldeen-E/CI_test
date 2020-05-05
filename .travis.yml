@@ -2,6 +2,9 @@ language: cpp
 
 compiler: gcc
 
+env:
+    - CODECOV_TOKEN="8ad626de-f68d-4889-aa49-dae87caed5d4"
+
 matrix:
   include:
     - os: linux
@@ -21,3 +24,7 @@ script: cmake . -DCMAKE_CXX_FLAGS=-std=c++11 && make && ./testChange
     #- dos2unix runLinux.sh
     #- bash runLinux.sh
     #- PowerShell -File run.ps1     # This is not working
+    
+    - export CODECOV_TOKEN="token"
+    - echo "token" > .cc_token
+    - curl -s https://codecov.io/bash -t @.cc_token
