@@ -8,12 +8,12 @@ project(change)
 
 enable_testing()
 
-
 #--------------------------- google test setup ----------------------------
 
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
 
+# Should add c++11 flag but it gives a wierd error in my machine
 
 # Flag for gtest to compile without errors
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations")
