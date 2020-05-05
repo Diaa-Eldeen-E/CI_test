@@ -9,7 +9,8 @@ matrix:
 
 before_install:
     - echo "Before install"
-    - apt install dos2unix
+    - gcc --version
+    - sudo apt install dos2unix
 
 
 
