@@ -16,5 +16,6 @@ install:
  # - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
 
 script: #cmake . 
+    - dos2unix runLinux.sh
     - bash runLinux.sh
     #- PowerShell -File run.ps1
