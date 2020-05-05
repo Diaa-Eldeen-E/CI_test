@@ -9,7 +9,7 @@ matrix:
 
 before_install:
     - echo "Before install"
-    - gcc --version
+    #install dos2unix to convert endline character of my script file to a linux script file
     - sudo apt-get install dos2unix
 
 
@@ -18,7 +18,6 @@ install:
  # - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
 
 script: #cmake . 
-    - gcc --version
     - dos2unix runLinux.sh
     - bash runLinux.sh
     #- PowerShell -File run.ps1

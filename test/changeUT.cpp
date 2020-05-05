@@ -37,7 +37,7 @@ TEST(changeTestCase, Positive) {
   // test case.
   EXPECT_EQ(1, get_change(1));
   EXPECT_EQ(2, get_change(6));
-  EXPECT_EQ(4, get_change(12));
+  EXPECT_EQ(3, get_change(12));
 
 }
 
