@@ -10,11 +10,6 @@ cmake --build .\_builds\make
 
 .\_builds\make\changeT
 
-cd ./_builds/make
-
-dir
-
-ctest
 
 
  #mingw32-make change -C .\_builds\make
