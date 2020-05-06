@@ -21,8 +21,8 @@ install:
  # - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
 
 script: 
-    - cmake . -DCMAKE_CXX_FLAGS=-std=c++11 && make && ./testChange
-    - make ct_coverage
+    - cmake . -DCMAKE_CXX_FLAGS=-std=c++11 && make && make ct_coverage #./testChange
+    # - make ct_coverage
     
     # Alternatives
     #- dos2unix runLinux.sh
