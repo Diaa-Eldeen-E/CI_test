@@ -1,22 +1,17 @@
 language: cpp
-
 compiler: gcc
 
-env:
-    global:
-        - CODECOV_TOKEN="8ad626de-f68d-4889-aa49-dae87caed5d4"
-
-matrix:
-  include:
-    - os: linux
+# matrix:
+  # include:
+    # - os: linux
 
 
 before_install:
     - echo "Before install"
     - sudo pip install codecov
     - sudo apt-get install lcov
-    - wget https://github.com/linux-test-project/lcov/archive/v1.13.zip
-    - unzip v1.13.zip
+    # - wget https://github.com/linux-test-project/lcov/archive/v1.13.zip
+    # - unzip v1.13.zip
     #install dos2unix to convert endline character of my script file to a linux script file
     # - sudo apt-get install dos2unix
 
@@ -27,13 +22,14 @@ install:
 
 script: 
     - cmake . -DCMAKE_CXX_FLAGS=-std=c++11 && make && ./testChange
+    - make ct_coverage
+    
+    # Alternatives
     #- dos2unix runLinux.sh
     #- bash runLinux.sh
     #- PowerShell -File run.ps1     # This is not working  
-    - make ct_coverage
+    
 
-
+# Post the coverage report to codecov
 after_success:
     - bash <(curl -s https://codecov.io/bash)
-    # - echo "token" > .cc_token
-    # - curl -s https://codecov.io/bash -t @.cc_token
