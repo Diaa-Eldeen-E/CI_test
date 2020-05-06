@@ -6,8 +6,6 @@ project(change)
 
 enable_testing()
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMakeModules")
-
 
 #------------------------------ google test setup -------------------------------------
 
@@ -86,12 +84,12 @@ target_link_libraries(testChange gtest gtest_main gcov)
 # You should add_test to be able to use it for code coverage
 add_test(NAME ctestChange COMMAND testChange)
 
-# Code coverage special flags, also must be without optimization (-O0)
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")	# c++
-SET(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")		# c
-# SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage" )
+if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
+	list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMakeModules")
+	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")	# c++
+	SET(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")	# c
 
-include(CodeCoverage)
-
-setup_target_for_coverage(ct_coverage testChange coverage)
+	include(CodeCoverage)
+	setup_target_for_coverage(ct_coverage testChange coverage)
+endif()
 
