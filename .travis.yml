@@ -28,8 +28,7 @@ script:
     #- dos2unix runLinux.sh
     #- bash runLinux.sh
     #- PowerShell -File run.ps1     # This is not working  
-    - ./get_code_cov >/dev/null
-    - codecov >/dev/null
+    - make ct_coverage
 
 
 after_success:
