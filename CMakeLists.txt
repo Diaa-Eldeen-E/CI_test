@@ -1,20 +1,6 @@
-# change money test project build
+# Change money test project build
 
 cmake_minimum_required(VERSION 3.1)
-
-#set(DCMAKE_SH="CMAKE_SH-NOTFOUND")
-
-# Code coverage special flags, also must be without optimization (-O0)
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")	# c++
-SET(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")		# c
-
-# SET(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE 1)
-
-# SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage" )	# c++
-# set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/CMakeModules")
-# list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
-
-
 
 project(change)
 
@@ -22,10 +8,8 @@ enable_testing()
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMakeModules")
 
-# option(BUILD_TESTING "Helping text" ON)
 
-
-#--------------------------- google test setup ----------------------------
+#------------------------------ google test setup -------------------------------------
 
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
@@ -67,8 +51,7 @@ endif()
 
 # -------------------------------------------------------------------------------------
 
-
-# Now simply link against gtest or gtest_main as needed. Eg
+# ------------------------ Building ---------------------------------------
 
 # Soruce variables
 set(TEST_SOURCES 
@@ -96,11 +79,17 @@ target_include_directories(testChange PUBLIC
 
 target_link_libraries(testChange gtest gtest_main gcov)
 
+# -------------------------------------------------------------------------------------
 
-#Code coverage
+# --------------------------- Code coverage -------------------------------------------
 
 # You should add_test to be able to use it for code coverage
 add_test(NAME ctestChange COMMAND testChange)
+
+# Code coverage special flags, also must be without optimization (-O0)
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")	# c++
+SET(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")		# c
+# SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage" )
 
 include(CodeCoverage)
 
