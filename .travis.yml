@@ -13,8 +13,10 @@ matrix:
 
 before_install:
     - echo "Before install"
-    - export CODECOV_TOKEN="token"
     - sudo pip install codecov
+    - sudo apt-get install lcov
+    - wget https://github.com/linux-test-project/lcov/archive/v1.13.zip
+    - unzip v1.13.zip
     #install dos2unix to convert endline character of my script file to a linux script file
     # - sudo apt-get install dos2unix
 
