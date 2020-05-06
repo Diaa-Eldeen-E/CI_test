@@ -1,0 +1,1 @@
+# This is a continuous integration educational project
