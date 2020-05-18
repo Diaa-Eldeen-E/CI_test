@@ -5,8 +5,8 @@ sudo: required
 
 before_install:
     - echo "Before install"
-    - pip install codecov
-    - apt-get install lcov
+    - sudo pip install codecov
+    - sudo apt-get install lcov
     
     - eval "$(curl -sL https://raw.githubusercontent.com/ryuichis/oclint-cpp-travis-ci-examples/master/oclint-ci-install.sh)"
     
